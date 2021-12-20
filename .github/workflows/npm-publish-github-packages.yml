@@ -1,0 +1,15 @@
+name: Tag an issue with custom text
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tag it using the action
+        id: hello
+        uses: console6500/javascript-action@v1.1
+        with:
+          custom_text: 'Tagged by an Action'
