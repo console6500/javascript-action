@@ -10,6 +10,6 @@ jobs:
     steps:
       - name: Tag it using the action
         id: hello
-        uses: console6500/javascript-action@v1.1
+        uses: console6500/javascript-action@main
         with:
           custom_text: 'Tagged by an Action'
