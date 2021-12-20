@@ -1,13 +1,15 @@
 name: 'Tag an Issue'
 description: 'Tags an issue with custom text'
 inputs:
-  issue_id:
-    description: 'The ID for the issue that was tagged'
-    default: ''
+  github_token:
+    description: 'The GitHub token to use for API operation'
   custom_text:
     description: 'The custom text for the tag'
     required: true
     default: 'Custom'
+outputs:
+  issue_author:
+    description: 'The username associated with the creation of the issue'
 runs:
   using: 'node16'
   main: 'dist/index.js'
