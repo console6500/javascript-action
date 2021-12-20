@@ -8452,7 +8452,7 @@ try {
     const octokit = github.getOctokit(github_token)
 
     // get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload.issue, undefined, 2)
+    const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The issue was created by: ${payload}`);
 
     const custom_text = core.getInput('custom_text');
