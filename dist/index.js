@@ -8451,6 +8451,7 @@ const github_token = core.getInput('github_token');
 const octokit = github.getOctokit(github_token)
 
 console.log(Object.keys(context));
+console.log(Object.keys(context.payload))
 
 // wrap data actions in a try-catch block
 // try {
