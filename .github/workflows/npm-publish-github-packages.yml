@@ -12,4 +12,5 @@ jobs:
         id: hello
         uses: console6500/javascript-action@main
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           custom_text: 'Tagged by an Action'
