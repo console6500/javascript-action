@@ -8442,18 +8442,26 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
+// include the core and github libraries for actions
 const core = __nccwpck_require__(5707);
 const github = __nccwpck_require__(2771);
 
+// wrap data actions in a try-catch block
 try {
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+    const github_token = core.getInput('github_token');
+    const octokit = github.getOctokit(github_token)
 
-  const custom_text = core.getInput('custom_text');
-  console.log(`Custom text is: ${custom_text}`);
+    // get the JSON webhook payload for the event that triggered the workflow
+    const payload = JSON.stringify(github.context.payload, undefined, 2)
+    console.log(`The issue was created by: ${payload.issue.user.login}`);
+    console.log(`The issue ID is: ${payload.issue.id}`);
+
+    const custom_text = core.getInput('custom_text');
+    console.log(`Custom text is: ${custom_text}`);
+
+ // report any errors that may have been encountered
 } catch (error) {
-  core.setFailed(error.message);
+    core.setFailed(error.message);
 }
 
 })();
