@@ -9,9 +9,8 @@ try {
 
     // get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
-    console.log(`github: ${github}`);
-    console.log(`github context: ${github.context}`);
-    console.log(`The issue was created by: ${payload}`);
+    const issue = JSON.stringify(github.context.payload.issue, undefined, 2)
+    console.log(`The issue is: ${issue}`);
 
     const custom_text = core.getInput('custom_text');
     console.log(`Custom text is: ${custom_text}`);
