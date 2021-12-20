@@ -8459,7 +8459,7 @@ if (context.eventName === "issues") {
     console.log(payload.issue.id);
     console.log(payload.issue.user.login);
 } else {
-    message = "This action should only be used in workflows trigger sby 'issues'";
+    message = "This action should only be used in workflows triggered by 'issues'";
     console.log(message);
     core.warning(message);
 }
