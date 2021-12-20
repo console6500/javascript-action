@@ -8448,17 +8448,20 @@ const github = __nccwpck_require__(2771);
 
 const { context } = __nccwpck_require__(2771)
 const github_token = core.getInput('github_token');
-const octokit = github.getOctokit(github_token)
+const octokit = github.getOctokit(github_token);
 
 console.log(Object.keys(context));
 console.log(context.eventName);
 
 if (context.eventName === "issues") {
-    console.log(Object.keys(context.payload.issue))
+    const { paylod } = context
+    console.log(Object.keys(payload.issue));
+    console.log(payload.issue.id);
+    console.log(payload.issue.user.login);
 } else {
-    message = "This action should only be used in workflows triggers by 'issues'";
+    message = "This action should only be used in workflows trigger sby 'issues'";
     console.log(message);
-    core.warning(message)
+    core.warning(message);
 }
 
 // wrap data actions in a try-catch block
