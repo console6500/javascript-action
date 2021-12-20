@@ -1,10 +1,7 @@
 // include the core and github libraries for actions
 const core = require('@actions/core');
 const github = require('@actions/github');
-
 const { context } = require('@actions/github')
-const github_token = core.getInput('github_token');
-const octokit = github.getOctokit(github_token);
 
 console.log(Object.keys(context));
 console.log(context.eventName);
@@ -12,10 +9,19 @@ console.log(context.eventName);
 if (context.eventName === "issues") {
     const { payload } = context
     console.log(Object.keys(payload.issue));
-    console.log(payload.issue.id);
-    console.log(payload.issue.user.login);
+    console.log(`The issue ID is: ${payload.issue.id}`);
+    console.log(`The issue was submitted by: ${payload.issue.user.login}`);
+
+    try {
+        const github_token = core.getInput('github_token', { required: true });
+        const custom_text = core.getInput('label_text', { required: true });
+        const octokit = github.getOctokit(github_token);
+    } catch (error) {
+        core.setFailed(error.message);
+    }
+
 } else {
-    message = "This action should only be used in workflows triggered by 'issues'";
+    message = "This action should only be used in workflows triggered on: 'issues'";
     console.log(message);
     core.warning(message);
 }
