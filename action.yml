@@ -1,0 +1,13 @@
+name: 'Tag an Issue'
+description: 'Tags an issue with custom text'
+inputs:
+  issue_id:
+    description: 'The ID for the issue that was tagged'
+    default: ''
+  custom_text:
+    description: 'The custom text for the tag'
+    required: true
+    default: 'Custom'
+runs:
+  using: 'node12'
+  main: 'index.js'
