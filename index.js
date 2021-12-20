@@ -10,7 +10,8 @@ console.log(Object.keys(context));
 console.log(context.eventName);
 
 if (context.eventName === "issues") {
-    console.log(Object.keys(context.payload.issue))
+    const { paylod } = context
+    console.log(Object.keys(payload.issue))
 } else {
     message = "This action should only be used in workflows triggers by 'issues'";
     console.log(message);
