@@ -3,8 +3,11 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 // get the context for this run of the script
-const context = github.context;
-console.log(`The event context: ${context}`);
+const context = (github as any).context
+const issue = context.payload.issue
+
+console.log(`The context: ${context}`);
+console.log(`The issue: ${issue}`);
 
 // wrap data actions in a try-catch block
 try {

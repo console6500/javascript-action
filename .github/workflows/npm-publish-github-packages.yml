@@ -1,6 +1,7 @@
 name: Tag an issue with custom text
 
 on:
+  push:
   issues:
     types: [opened]
 
