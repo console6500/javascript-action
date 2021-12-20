@@ -8452,7 +8452,14 @@ const octokit = github.getOctokit(github_token)
 
 console.log(Object.keys(context));
 console.log(context.eventName);
-console.log(Object.keys(context.payload.issue))
+
+if (context.eventName === "issues") {
+    console.log(Object.keys(context.payload.issue))
+} else {
+    message = "This action should only be used in workflows triggers by 'issues'";
+    console.log(message);
+    core.warning(message)
+}
 
 // wrap data actions in a try-catch block
 // try {
