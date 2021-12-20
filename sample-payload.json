@@ -1,8 +1,4 @@
-Run console6500/javascript-action@main
-  with:
-    github_token: ***
-    custom_text: Tagged by an Action
-The event payload: {
+{
   "action": "opened",
   "issue": {
     "active_lock_reason": null,
@@ -182,4 +178,3 @@ The event payload: {
     "url": "https://api.github.com/users/console6500"
   }
 }
-Custom text is: Tagged by an Action
