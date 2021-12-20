@@ -8454,7 +8454,7 @@ console.log(Object.keys(context));
 console.log(context.eventName);
 
 if (context.eventName === "issues") {
-    const { paylod } = context
+    const { payload } = context
     console.log(Object.keys(payload.issue));
     console.log(payload.issue.id);
     console.log(payload.issue.user.login);
