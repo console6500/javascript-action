@@ -6,7 +6,7 @@ const { context } = require('@actions/github')
 const github_token = core.getInput('github_token');
 const octokit = github.getOctokit(github_token)
 
-console.log(`The context is ${context}`);
+console.log(Object.keys(context));
 
 // wrap data actions in a try-catch block
 // try {
