@@ -2,19 +2,23 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
+const { context } = require('@actions/github')
+const github_token = core.getInput('github_token');
+const octokit = github.getOctokit(github_token)
+
+console.log(`The context is ${context}`);
+
 // wrap data actions in a try-catch block
-try {
-    const github_token = core.getInput('github_token');
-    const octokit = github.getOctokit(github_token)
-
-    // get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
-    console.log(`The issue is: ${github.context.payload['issue']}`);
-
-    const custom_text = core.getInput('custom_text');
-    console.log(`Custom text is: ${custom_text}`);
-
- // report any errors that may have been encountered
-} catch (error) {
-    core.setFailed(error.message);
-}
+// try {
+//
+//     // get the JSON webhook payload for the event that triggered the workflow
+//     const payload = JSON.stringify(github.context.payload, undefined, 2)
+//     console.log(`The issue is: ${github.context.payload['issue']}`);
+//
+//     const custom_text = core.getInput('custom_text');
+//     console.log(`Custom text is: ${custom_text}`);
+//
+//  // report any errors that may have been encountered
+// } catch (error) {
+//     core.setFailed(error.message);
+// }
