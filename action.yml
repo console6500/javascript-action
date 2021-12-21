@@ -1,9 +1,9 @@
 name: 'Label an Issue'
 description: 'Labels an issue with user specified text'
 inputs:
-  github_token:
+  GITHUB_TOKEN:
     description: 'The GitHub token to use for API operation'
-  label_text:
+  LABEL_TEXT:
     description: 'The text for the label'
     required: true
     default: 'Custom'

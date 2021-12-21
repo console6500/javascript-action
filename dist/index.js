@@ -8447,28 +8447,26 @@ const core = __nccwpck_require__(5707);
 const github = __nccwpck_require__(2771);
 const { context } = __nccwpck_require__(2771)
 
-// console.log(Object.keys(context));
-// console.log(context.eventName);
+async function create_comment() {
+    const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN', { required: true });
+    const CUSTOM_TEXT = core.getInput('LABEL_TEXT', { required: true });
+    const octokit = github.getOctokit(github_token);
+    const { issue } = context.payload
+    console.log(Object.keys(issue));
+    console.log(`Issue ID: ${issue.id}`);
+    console.log(`Submitted by: ${issue.user.login}`);
+    console.log(`Repo name: ${context.repo}`);
+
+    await octokit.issues.createComment({
+        ...context.repo,
+        issue_number: issue.id,
+        body: CUSTOM_TEXT});
+}
 
 if (context.eventName === "issues") {
-    const { payload } = context
-    console.log(Object.keys(payload.issue));
-    console.log(`Issue ID: ${payload.issue.id}`);
-    console.log(`Submitted by: ${payload.issue.user.login}`);
-    console.log(`Repo name: ${payload.repository.name}`);
-    console.log(`Repo owner: ${payload.repository.owner.login}`);
 
     try {
-        const github_token = core.getInput('github_token', { required: true });
-        const custom_text = core.getInput('label_text', { required: true });
-        const octokit = github.getOctokit(github_token);
-
-        octokit.rest.issues.addLabels(
-            payload.repository.owner.login,
-            payload.repository.name,
-            payload.issue.id,
-            custom_text);
-
+        create_comment();
     } catch (error) {
         core.setFailed(error.message);
     }

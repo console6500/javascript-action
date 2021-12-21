@@ -13,5 +13,5 @@ jobs:
         id: hello
         uses: console6500/javascript-action@main
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          label_text: 'GitHub Actions'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LABEL_TEXT: 'GitHub Actions'
