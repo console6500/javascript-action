@@ -3,8 +3,8 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const { context } = require('@actions/github')
 
-console.log(Object.keys(context));
-console.log(context.eventName);
+// console.log(Object.keys(context));
+// console.log(context.eventName);
 
 if (context.eventName === "issues") {
     const { payload } = context

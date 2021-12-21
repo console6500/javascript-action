@@ -8447,8 +8447,8 @@ const core = __nccwpck_require__(5707);
 const github = __nccwpck_require__(2771);
 const { context } = __nccwpck_require__(2771)
 
-console.log(Object.keys(context));
-console.log(context.eventName);
+// console.log(Object.keys(context));
+// console.log(context.eventName);
 
 if (context.eventName === "issues") {
     const { payload } = context
