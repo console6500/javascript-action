@@ -17,10 +17,8 @@ async function create_comment() {
 
     console.log(`Issue ID: ${issue.id}`);
     console.log(`Submitted by: ${issue.user.login}`);
-    console.log(octokit);
     console.log(Object.keys(octokit));
-    console.log(Object.keys(octokit.rest));
-    console.log(Object.keys(octokit.rest.issues));
+    octokit.rest.issues.list();
     //octokit.rest.issues.list({
     //    ...context.repo,
     //    issue_number: issue.id,
