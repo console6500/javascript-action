@@ -8461,12 +8461,13 @@ async function create_comment() {
 
     console.log(`Issue ID: ${issue.id}`);
     console.log(`Submitted by: ${issue.user.login}`);
-
-    octokit.issues.createComment({
-        ...context.repo,
-        issue_number: issue.id,
-        body: "Text goes here",
-    });
+    console.log(octokit);
+    console.log(Object.keys(octokit));
+    // octokit.issues.createComment({
+    //     ...context.repo,
+    //     issue_number: issue.id,
+    //     body: "Text goes here",
+    // });
 }
 
 if (context.eventName === "issues") {
