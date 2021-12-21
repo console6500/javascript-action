@@ -6,7 +6,7 @@ const { context } = require('@actions/github')
 async function create_comment() {
     const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN', { required: true });
     const CUSTOM_TEXT = core.getInput('LABEL_TEXT', { required: true });
-    const octokit = github.getOctokit(github_token);
+    const octokit = github.getOctokit(GITHUB_TOKEN);
     const { issue } = context.payload
     console.log(Object.keys(issue));
     console.log(`Issue ID: ${issue.id}`);
