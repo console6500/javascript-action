@@ -1,10 +1,10 @@
-name: 'Tag an Issue'
-description: 'Tags an issue with custom text'
+name: 'Label an Issue'
+description: 'Labels an issue with user specified text'
 inputs:
   github_token:
     description: 'The GitHub token to use for API operation'
-  custom_text:
-    description: 'The custom text for the tag'
+  label_text:
+    description: 'The text for the label'
     required: true
     default: 'Custom'
 outputs:
