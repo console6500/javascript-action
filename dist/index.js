@@ -8452,10 +8452,15 @@ async function create_comment() {
     const CUSTOM_TEXT = core.getInput('LABEL_TEXT', { required: true });
     const octokit = github.getOctokit(GITHUB_TOKEN);
     const { issue } = context.payload
+
+    console.log(`Issue`);
     console.log(Object.keys(issue));
+
+    console.log(`Repo keys`);
+    console.log(Object.keys(context.repo));
+
     console.log(`Issue ID: ${issue.id}`);
     console.log(`Submitted by: ${issue.user.login}`);
-    console.log(`Repo name: ${context.repo}`);
 
 //    await octokit.issues.createComment({
 //        ...context.repo,
